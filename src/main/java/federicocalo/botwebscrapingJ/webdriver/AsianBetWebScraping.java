@@ -13,16 +13,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class TotalCornerWebscraper {
-    private final String url = "https://www.totalcorner.com/match/today";
+public class AsianBetWebScraping {
+    private final String url = "https://www.asianbetsoccer.com/it/livescore.html";
 
     private WebDriver driver;
 
-    public TotalCornerWebscraper(){
-        this.driver = new  ChromeDriver();
+    public AsianBetWebScraping(){
+        this.driver = new ChromeDriver();
         driver.get(url);
     }
 
@@ -38,13 +36,15 @@ public class TotalCornerWebscraper {
         this.driver = driver;
     }
 
-    public void mainTotalCorner(WebDriver driver) throws IOException {
+    public void mainAsianBet(WebDriver driver) throws IOException {
 
 
         Workbook workbook = new XSSFWorkbook();
 
         Sheet sheet = workbook.createSheet("Risultati TC");
+        WebElement table = driver.findElement(By.id("tablematch2"));
 
+        System.out.println(table.getText());
 
         sheet.autoSizeColumn(0);
         sheet.autoSizeColumn(1);
@@ -76,43 +76,10 @@ public class TotalCornerWebscraper {
         Cell cell5 = row.createCell(6);
         cell5.setCellValue("Goal Line");
 
-        registraPartite(sheet);
 
-        FileOutputStream fos = new FileOutputStream(SaveUtils.risultatiExcelTC);
+        FileOutputStream fos = new FileOutputStream(SaveUtils.risultatiExcelASB);
         workbook.write(fos);
         fos.close();
         driver.quit();
-    }
-
-    private void registraPartite(Sheet sheet) {
-        WebElement bodyTable = driver.findElement(By.className("tbody_match"));
-        List<WebElement> tr = bodyTable.findElements(By.tagName("tr"));
-
-        AtomicInteger indexRow = new AtomicInteger(1);
-        tr.stream().forEach(e -> {
-            Row row = sheet.createRow(indexRow.get());
-
-            Cell cell0 = row.createCell(0);
-            cell0.setCellValue(e.findElements(By.tagName("td")).get(2).getText());
-
-            Cell cell6 = row.createCell(1);
-            cell6.setCellValue(e.findElements(By.tagName("td")).get(1).getText());
-
-            Cell cell1 = row.createCell(2);
-            cell1.setCellValue(e.findElements(By.tagName("td")).get(4).getText());
-
-            Cell cell2 = row.createCell(3);
-            cell2.setCellValue(e.findElements(By.tagName("td")).get(6).getText());
-
-            Cell cell3 = row.createCell(4);
-            cell3.setCellValue(e.findElements(By.tagName("td")).get(7).getText());
-
-            Cell cell4 = row.createCell(5);
-            cell4.setCellValue(e.findElements(By.tagName("td")).get(8).getText());
-
-            Cell cell5 = row.createCell(6);
-            cell5.setCellValue(e.findElements(By.tagName("td")).get(9).getText());
-            indexRow.getAndIncrement();
-        });
     }
 }
