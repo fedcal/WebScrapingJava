@@ -14,6 +14,9 @@ public class SaveUtils {
     public static final String risultatiExcelTC = "./risultati/TotalCorner/risultatiTC.xlsx";
     public static final String risultatiExcelASB = "./risultati/AsianBet/risultatiASB.xlsx";
 
+    public static final String risultatiExcelTC_Filtrati = "./risultati/TotalCorner/risultatiTC_Filtrati.xlsx";
+    public static final String risultatiExcelASB_Filtrati = "./risultati/AsianBet/risultatiASB_Filtrati.xlsx";
+
 
     public static void checkFolder(){
         // Crea un oggetto File con il percorso specificato

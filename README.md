@@ -46,3 +46,55 @@ ho utilizzato la libreria Apache Poi.
 
 Il linguaggio base è Java, creando un progetto basato su tecnologia Maven.
 
+## Building jar
+
+```<packaging>jar</packaging>```
+
+```
+<dependency>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-assembly-plugin</artifactId>
+<version>2.3</version>
+<type>maven-plugin</type>
+</dependency>
+```
+```
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        federicocalo.botwebscrapingJ.Launcher
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>18</source>
+                    <target>18</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+```

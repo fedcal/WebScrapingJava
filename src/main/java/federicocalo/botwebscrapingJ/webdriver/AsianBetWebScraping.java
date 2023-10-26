@@ -44,8 +44,6 @@ public class AsianBetWebScraping {
         Sheet sheet = workbook.createSheet("Risultati TC");
         WebElement table = driver.findElement(By.id("tablematch2"));
 
-        System.out.println(table.getText());
-
         sheet.autoSizeColumn(0);
         sheet.autoSizeColumn(1);
         sheet.autoSizeColumn(2);
