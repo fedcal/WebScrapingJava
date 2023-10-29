@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 public class AsianBetWebScraping {
     private final String url = "https://www.asianbetsoccer.com/it/livescore.html";
@@ -74,10 +75,19 @@ public class AsianBetWebScraping {
         Cell cell5 = row.createCell(6);
         cell5.setCellValue("Goal Line");
 
+        registraPartite(sheet);
 
         FileOutputStream fos = new FileOutputStream(SaveUtils.risultatiExcelASB);
         workbook.write(fos);
         fos.close();
         driver.quit();
+    }
+
+    private void registraPartite(Sheet sheet) {
+        WebElement bodyTable = driver.findElement(By.id("tablematch2"));
+        List<WebElement> tr = bodyTable.findElements(By.tagName("tr"));
+        tr.stream().forEach(e ->{
+            System.out.println(e.findElements(By.tagName("td")).get(0).getText());
+        });
     }
 }
