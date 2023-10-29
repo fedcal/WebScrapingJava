@@ -11,72 +11,11 @@ public class SaveUtils {
     public static final String risultati = "./risultati";
     public static final String risultatiTC = "./risultati/TotalCorner";
     public static final String risultatiASB = "./risultati/AsianBet";
-    public static final String risultatiTxtTC = "./risultati/TotalCorner/risultatiTC.txt";
-    public static final String risultatiTxtASB = "./risultati/AsianBet/risultatiASB.txt";
     public static final String risultatiExcelTC = "./risultati/TotalCorner/risultatiTC.xlsx";
     public static final String risultatiExcelASB = "./risultati/AsianBet/risultatiASB.xlsx";
 
-    public static void checkFileTxt() throws IOException {
-        File file = new File(risultatiTxtTC);
-
-        // Verifica se la cartella esiste
-        if (file.exists()) {
-            System.out.println("Il file risultati.txt esiste.");
-        } else {
-            // La cartella non esiste, quindi proviamo a crearla
-            boolean creata = file.createNewFile();
-            if (creata) {
-                System.out.println("Il file risultati.txt è stato creato con successo.");
-            } else {
-                System.out.println("Impossibile creare Il file risultati.txt.");
-            }
-        }
-
-        file = new File(risultatiTxtASB);
-
-        // Verifica se la cartella esiste
-        if (file.exists()) {
-            System.out.println("Il file risultati.txt esiste.");
-        } else {
-            // La cartella non esiste, quindi proviamo a crearla
-            boolean creata = file.createNewFile();
-            if (creata) {
-                System.out.println("Il file risultati.txt è stato creato con successo.");
-            } else {
-                System.out.println("Impossibile creare Il file risultati.txt.");
-            }
-        }
-
-        file = new File(risultatiExcelTC);
-
-        // Verifica se la cartella esiste
-        if (file.exists()) {
-            System.out.println("Il file risultati.txt esiste.");
-        } else {
-            // La cartella non esiste, quindi proviamo a crearla
-            boolean creata = file.createNewFile();
-            if (creata) {
-                System.out.println("Il file risultati.txt è stato creato con successo.");
-            } else {
-                System.out.println("Impossibile creare Il file risultati.txt.");
-            }
-        }
-
-        file = new File(risultatiExcelASB);
-
-        // Verifica se la cartella esiste
-        if (file.exists()) {
-            System.out.println("Il file risultati.txt esiste.");
-        } else {
-            // La cartella non esiste, quindi proviamo a crearla
-            boolean creata = file.createNewFile();
-            if (creata) {
-                System.out.println("Il file risultati.txt è stato creato con successo.");
-            } else {
-                System.out.println("Impossibile creare Il file risultati.txt.");
-            }
-        }
-    }
+    public static final String risultatiExcelTC_Filtrati = "./risultati/TotalCorner/risultatiTC_Filtrati.xlsx";
+    public static final String risultatiExcelASB_Filtrati = "./risultati/AsianBet/risultatiASB_Filtrati.xlsx";
 
 
     public static void checkFolder(){
